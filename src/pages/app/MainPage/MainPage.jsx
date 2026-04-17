@@ -6,10 +6,17 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Box, Typography } from '@mui/material';
 
 import { getPosts, selectPosts, toggleLikePostInStore, toggleLikePost } from '../../../redux/slices/postSlice';
-import { Posts, Post, Author, ImgAvatar, Image, FollowButton, ActionButtons, ActionButton, Comments, Comment, CommentText } from './MainPage.styled';
+import {
+    Posts, Post,
+    Author, ImgAvatar, Image,
+    FollowButton, ActionButtons, ActionButton,
+    Comments, Comment, CommentText,
+    LastBlock,
+} from './MainPage.styled';
 import IconLike from '../../../assets/icons/like.svg';
 import IconLikeFilled from '../../../assets/icons/like-filled.svg';
 import IconComment from '../../../assets/icons/comment.svg';
+import ImgPostsSeen from '../../../assets/ico_posts_seen.png';
 
 dayjs.extend(relativeTime);
 
@@ -71,6 +78,11 @@ function MainPage() {
                     </NavLink>
                 </Post>
             ))}
+            <LastBlock>
+                <img src={ImgPostsSeen} />
+                <Typography fontSize="1.4rem">You've seen all the updates</Typography>
+                <Typography variant="bodyGrey">You have viewed all new publications</Typography>
+            </LastBlock>
         </Posts>
     );
 }

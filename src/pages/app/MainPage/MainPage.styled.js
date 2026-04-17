@@ -77,3 +77,9 @@ export const CommentText = styled(Typography)(() => ({
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
 }));
+
+export const LastBlock = styled(Box)(({ theme }) => ({
+    padding: `${theme.spacing(4.75)} ${theme.spacing(2)} ${theme.spacing(9.25)}`,
+    textAlign: 'center',
+    width: '100%',
+}));
