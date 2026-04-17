@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import { getPosts, selectPosts, toggleLikePostInStore, toggleLikePost } from '../../../redux/slices/postSlice';
-import { Posts, Post, Author, ImgAvatar, Image, FollowButton, ActionButtons, ActionButton } from './MainPage.styled';
+import { Posts, Post, Author, ImgAvatar, Image, FollowButton, ActionButtons, ActionButton, Comments, Comment, CommentText } from './MainPage.styled';
 import IconLike from '../../../assets/icons/like.svg';
 import IconLikeFilled from '../../../assets/icons/like-filled.svg';
 import IconComment from '../../../assets/icons/comment.svg';
@@ -58,6 +58,17 @@ function MainPage() {
                         </ActionButton>
                     </ActionButtons>
                     <Typography fontWeight="bold">{post.likesCount} likes</Typography>
+                    <Comments>
+                        {post.firstComments && post.firstComments.map(comment => (
+                            <Comment key={comment.id}>
+                                <Typography fontWeight="bold">{comment.author.username}</Typography>
+                                <CommentText>{comment.text}</CommentText>
+                            </Comment>
+                        ))}
+                    </Comments>
+                    <NavLink to={`/post/${post.id}`}>
+                        <Typography variant="bodyGrey">View all comments ({post.commentsCount})</Typography>
+                    </NavLink>
                 </Post>
             ))}
         </Posts>

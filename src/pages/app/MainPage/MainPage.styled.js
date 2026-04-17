@@ -13,6 +13,7 @@ export const Post = styled(Stack)(({ theme }) => ({
     borderBottom: `1px solid ${theme.palette.greyMedium.main}`,
     paddingBottom: theme.spacing(4.75),
     flex: `0 1 404px`,
+    maxWidth: '404px',
 }));
 
 export const Author = styled(Stack)(({ theme }) => ({
@@ -60,4 +61,19 @@ export const ActionButton = styled(Button)(() => ({
     background: 'transparent',
     padding: 0,
     minWidth: 'initial',
+}));
+
+export const Comments = styled(Box)(({ theme }) => ({
+    padding: `${theme.spacing(1)} 0`,
+}));
+
+export const Comment = styled(Stack)(({ theme }) => ({
+    flexDirection: 'row',
+    gap: theme.spacing(1),
+}));
+
+export const CommentText = styled(Typography)(() => ({
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
 }));
