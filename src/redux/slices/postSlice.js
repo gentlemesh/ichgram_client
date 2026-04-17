@@ -147,7 +147,17 @@ const postSlice = createSlice({
         status: STATUS_IDLE,
         errors: [],
     },
-    reducers: {},
+    reducers: {
+        toggleLikePostInStore: (state, action) => {
+            const post = state.posts.find(p => p.id === action.payload);
+            post.isLiked = !post.isLiked;
+            if (post.isLiked) {
+                post.likesCount++;
+            } else {
+                post.likesCount--;
+            }
+        },
+    },
     extraReducers: builder => {
         [
             getPosts,
@@ -209,5 +219,7 @@ export const selectPostIsLoading = state => state.post.status === STATUS_LOADING
 export const selectPostIsSuccess = state => state.post.status === STATUS_SUCCESS;
 export const selectPostIsFail = state => state.post.status === STATUS_FAIL;
 export const selectPostErrors = state => state.post.errors;
+
+export const { toggleLikePostInStore } = postSlice.actions;
 
 export default postSlice.reducer;

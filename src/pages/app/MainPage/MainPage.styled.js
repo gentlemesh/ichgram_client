@@ -45,3 +45,19 @@ export const FollowButton = styled(Button)(({ theme }) => ({
     paddingBottom: 0,
     marginLeft: theme.spacing(2),
 }));
+
+export const ActionButtons = styled(Stack)(({ theme }) => ({
+    flexDirection: 'row',
+    gap: theme.spacing(1.75),
+    padding: `${theme.spacing(1.25)} 0`,
+    '& a': {
+        display: 'inline-flex',
+        alignItems: 'center',
+    },
+}));
+
+export const ActionButton = styled(Button)(() => ({
+    background: 'transparent',
+    padding: 0,
+    minWidth: 'initial',
+}));
