@@ -17,7 +17,7 @@ function NotificationsPage() {
             <NotificationsList>
                 {notifications && Array.isArray(notifications) && (
                     notifications.length > 0
-                        ? notifications.map(notification => <User user={notification.user} />)
+                        ? notifications.map(notification => <User key={notification.user.id} user={notification.user} />)
                         : <Typography variant="bodyGrey">No notifications yet</Typography>
                 )}
             </NotificationsList>

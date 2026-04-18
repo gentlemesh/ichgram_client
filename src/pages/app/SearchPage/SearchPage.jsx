@@ -36,7 +36,7 @@ function SearchPage() {
             <SearchResults>
                 {users && Array.isArray(users) && (
                     users.length > 0
-                        ? users.map(user => <User user={user} />)
+                        ? users.map(user => <User key={user.id} user={user} />)
                         : <Typography variant="bodyGrey">No results found</Typography>
                 )}
             </SearchResults>
