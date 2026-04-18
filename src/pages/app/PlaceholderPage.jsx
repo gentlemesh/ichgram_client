@@ -4,6 +4,7 @@ function PlaceholderPage() {
     return (
         <Stack sx={{
             width: '100%',
+            height: '100%',
             justifyContent: 'center',
             alignItems: 'center',
         }}>

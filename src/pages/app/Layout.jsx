@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Stack, useTheme } from '@mui/material';
+import { Box, Stack, useTheme } from '@mui/material';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Footer from '../../components/Footer/Footer';
@@ -20,7 +20,9 @@ function Layout() {
         <Stack backgroundColor={theme.palette.background.main} minHeight="100%">
             <Stack flexDirection="row" alignItems="stretch">
                 <Sidebar />
-                <Outlet />
+                <Box sx={{ position: 'relative', flexGrow: 1 }}>
+                    <Outlet />
+                </Box>
             </Stack>
             <Footer />
         </Stack>

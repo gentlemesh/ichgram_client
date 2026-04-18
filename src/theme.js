@@ -54,14 +54,11 @@ export const theme = createTheme({
         greyMedium: {
             main: 'var(--color-grey-medium)',
         },
-        // shadowCard: {
-        //     main: 'rgba(0, 0, 0, 0.3)',
-        // }
+        backdrop: {
+            main: 'var(--color-modal-backdrop)',
+        }
     },
     layout: {
-        // paddingX: 'var(--layout-padding-x)',
-        // maxWidth: 'var(--layout-max-width)',
-        // sectionPaddingBottom: 'var(--layout-section-padding-bottom)',
         radius: {
             tiny: 'var(--layout-radius-tiny)',
             small: 'var(--layout-radius-small)',

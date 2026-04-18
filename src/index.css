@@ -8,6 +8,7 @@
     --color-grey-extralight: rgb(250, 250, 250);
     --color-grey-light: rgb(239, 239, 239);
     --color-grey-medium: rgb(219, 219, 219);
+    --color-modal-backdrop: rgba(0, 0, 0, .65);
 
     --text-basic-font-family: "Roboto", sans-serif;
     --text-basic-font-size: 12px;
