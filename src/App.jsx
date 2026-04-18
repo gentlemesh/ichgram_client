@@ -12,6 +12,8 @@ import Restore from './pages/auth/Restore/Restore';
 import Autologin from './pages/auth/Autologin/Autologin';
 
 import MainPage from './pages/app/MainPage/MainPage';
+import SearchPage from './pages/app/SearchPage/SearchPage';
+import NotificationsPage from './pages/app/NotificationsPage/NotificationsPage';
 
 import Error404Page from './pages/app/Error404Page/Error404Page';
 import PlaceholderPage from './pages/app/PlaceholderPage';
@@ -45,10 +47,10 @@ function App() {
                 {/* Protected Routes */}
                 <Route element={<ProtectedRoute isLoginChecked={isLoginChecked} user={user} />}>
                     <Route path='/' element={<MainPage />} />
-                    <Route path='/search' element={<PlaceholderPage />} />
+                    <Route path='/search' element={<SearchPage />} />
                     <Route path='/explore' element={<PlaceholderPage />} />
                     <Route path='/messages' element={<PlaceholderPage />} />
-                    <Route path='/notification' element={<PlaceholderPage />} />
+                    <Route path='/notification' element={<NotificationsPage />} />
                     <Route path='/create' element={<PlaceholderPage />} />
                     <Route path='/profile/current' element={<PlaceholderPage />} />
                     <Route path='/profile/:id' element={<PlaceholderPage />} />

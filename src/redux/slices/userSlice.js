@@ -105,7 +105,11 @@ const userSlice = createSlice({
         status: STATUS_IDLE,
         errors: [],
     },
-    reducers: {},
+    reducers: {
+        resetUsers: state => {
+            state.users = null;
+        },
+    },
     extraReducers: builder => {
         [
             getCurrentUser,
@@ -159,5 +163,7 @@ export const selectUserIsLoading = state => state.user.status === STATUS_LOADING
 export const selectUserIsSuccess = state => state.user.status === STATUS_SUCCESS;
 export const selectUserIsFail = state => state.user.status === STATUS_FAIL;
 export const selectUserErrors = state => state.user.errors;
+
+export const { resetUsers } = userSlice.actions;
 
 export default userSlice.reducer;
