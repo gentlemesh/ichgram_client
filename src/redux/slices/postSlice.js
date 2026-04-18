@@ -157,6 +157,9 @@ const postSlice = createSlice({
                 post.likesCount--;
             }
         },
+        resetRandomPosts: state => {
+            state.randomPosts = null;
+        },
     },
     extraReducers: builder => {
         [
@@ -220,6 +223,6 @@ export const selectPostIsSuccess = state => state.post.status === STATUS_SUCCESS
 export const selectPostIsFail = state => state.post.status === STATUS_FAIL;
 export const selectPostErrors = state => state.post.errors;
 
-export const { toggleLikePostInStore } = postSlice.actions;
+export const { toggleLikePostInStore, resetRandomPosts } = postSlice.actions;
 
 export default postSlice.reducer;

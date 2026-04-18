@@ -13,6 +13,7 @@ import Autologin from './pages/auth/Autologin/Autologin';
 
 import MainPage from './pages/app/MainPage/MainPage';
 import SearchPage from './pages/app/SearchPage/SearchPage';
+import ExplorePage from './pages/app/ExplorePage/ExplorePage';
 import NotificationsPage from './pages/app/NotificationsPage/NotificationsPage';
 
 import Error404Page from './pages/app/Error404Page/Error404Page';
@@ -48,7 +49,7 @@ function App() {
                 <Route element={<ProtectedRoute isLoginChecked={isLoginChecked} user={user} />}>
                     <Route path='/' element={<MainPage />} />
                     <Route path='/search' element={<SearchPage />} />
-                    <Route path='/explore' element={<PlaceholderPage />} />
+                    <Route path='/explore' element={<ExplorePage />} />
                     <Route path='/messages' element={<PlaceholderPage />} />
                     <Route path='/notification' element={<NotificationsPage />} />
                     <Route path='/create' element={<PlaceholderPage />} />
