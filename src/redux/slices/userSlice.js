@@ -109,6 +109,13 @@ const userSlice = createSlice({
         resetUsers: state => {
             state.users = null;
         },
+        resetProfile: state => {
+            state.profile = null;
+        },
+        resetRequestState: state => {
+            state.status = STATUS_IDLE;
+            state.errors = [];
+        },
     },
     extraReducers: builder => {
         [
@@ -164,6 +171,6 @@ export const selectUserIsSuccess = state => state.user.status === STATUS_SUCCESS
 export const selectUserIsFail = state => state.user.status === STATUS_FAIL;
 export const selectUserErrors = state => state.user.errors;
 
-export const { resetUsers } = userSlice.actions;
+export const { resetUsers, resetProfile, resetRequestState } = userSlice.actions;
 
 export default userSlice.reducer;

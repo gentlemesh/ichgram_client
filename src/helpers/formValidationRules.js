@@ -14,6 +14,12 @@ const rules = {
             message: "Minimum 2 symbols required",
         },
     },
+    max: limit => ({
+        maxLength: {
+            value: limit,
+            message: `Maximum ${limit} symbols allowed`,
+        },
+    })
 }
 
 export default rules;

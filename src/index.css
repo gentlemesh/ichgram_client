@@ -22,6 +22,7 @@
     --layout-radius-medium: 8px;
     --layout-radius-normal: 12px;
     --layout-radius-large: 16px;
+    --layout-radius-big: 20px;
 
     font-family: var(--text-basic-font-family);
     font-optical-sizing: auto;

@@ -56,7 +56,10 @@ export const theme = createTheme({
         },
         backdrop: {
             main: 'var(--color-modal-backdrop)',
-        }
+        },
+        link: {
+            main: 'var(--color-link)',
+        },
     },
     layout: {
         radius: {
@@ -65,6 +68,7 @@ export const theme = createTheme({
             medium: 'var(--layout-radius-medium)',
             normal: 'var(--layout-radius-normal)',
             large: 'var(--layout-radius-large)',
+            big: 'var(--layout-radius-big)',
         },
     },
     components: {
