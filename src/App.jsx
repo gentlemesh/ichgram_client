@@ -18,6 +18,7 @@ import NotificationsPage from './pages/app/NotificationsPage/NotificationsPage';
 import CurrentProfilePage from './pages/app/ProfilePage/CurrentProfilePage';
 import ProfilePage from './pages/app/ProfilePage/ProfilePage';
 import ProfileEditPage from './pages/app/ProfileEditPage/ProfileEditPage';
+import PostPage from './pages/app/PostPage/PostPage';
 
 import Error404Page from './pages/app/Error404Page/Error404Page';
 import PlaceholderPage from './pages/app/PlaceholderPage';
@@ -60,7 +61,7 @@ function App() {
                     <Route path='/profile/current' element={<CurrentProfilePage />} />
                     <Route path='/profile/:id' element={<ProfilePage />} />
                     <Route path='/profile/current/edit' element={<ProfileEditPage />} />
-                    <Route path='/post/:id' element={<PlaceholderPage />} />
+                    <Route path='/post/:id' element={<PostPage />} />
                     <Route path='*' element={<Error404Page />} />
                 </Route>
             </Routes>

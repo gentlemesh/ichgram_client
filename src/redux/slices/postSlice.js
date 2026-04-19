@@ -105,10 +105,10 @@ export const getComments = createAsyncThunk(
 );
 export const addComment = createAsyncThunk(
     'post/addComment',
-    async (postId, { rejectWithValue, dispatch }) => {
+    async ({ postId, ...data }, { rejectWithValue, dispatch }) => {
         try {
-            await postData(`${BASE_URL}/comment/${postId}`);
-            dispatch(getComments());
+            await postData(`${BASE_URL}/comment/${postId}`, data);
+            dispatch(getComments(postId));
         } catch (err) {
             return rejectWithValue(err.response?.data?.errors ?? [{ msg: err.message }]);
         }
@@ -116,10 +116,10 @@ export const addComment = createAsyncThunk(
 );
 export const editComment = createAsyncThunk(
     'post/editComment',
-    async ({ id, ...data }, { rejectWithValue, dispatch }) => {
+    async ({ id, postId, ...data }, { rejectWithValue, dispatch }) => {
         try {
             await patchData(`${BASE_URL}/comment/${id}`, data);
-            dispatch(getComments());
+            dispatch(getComments(postId));
         } catch (err) {
             return rejectWithValue(err.response?.data?.errors ?? [{ msg: err.message }]);
         }
@@ -157,8 +157,29 @@ const postSlice = createSlice({
                 post.likesCount--;
             }
         },
+        toggleLikeCurrentPostInStore: state => {
+            state.post.isLiked = !state.post.isLiked;
+            if (state.post.isLiked) {
+                state.post.likesCount++;
+            } else {
+                state.post.likesCount--;
+            }
+        },
+        toggleLikeCommentInStore: (state, action) => {
+            const comment = state.comments.find(c => c.id === action.payload);
+            comment.isLiked = !comment.isLiked;
+            if (comment.isLiked) {
+                comment.likesCount++;
+            } else {
+                comment.likesCount--;
+            }
+        },
         resetRandomPosts: state => {
             state.randomPosts = null;
+        },
+        resetRequestState: state => {
+            state.status = STATUS_IDLE;
+            state.errors = [];
         },
     },
     extraReducers: builder => {
@@ -223,6 +244,6 @@ export const selectPostIsSuccess = state => state.post.status === STATUS_SUCCESS
 export const selectPostIsFail = state => state.post.status === STATUS_FAIL;
 export const selectPostErrors = state => state.post.errors;
 
-export const { toggleLikePostInStore, resetRandomPosts } = postSlice.actions;
+export const { toggleLikePostInStore, toggleLikeCurrentPostInStore, toggleLikeCommentInStore, resetRandomPosts, resetRequestState } = postSlice.actions;
 
 export default postSlice.reducer;
