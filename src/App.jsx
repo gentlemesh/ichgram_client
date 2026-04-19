@@ -54,6 +54,7 @@ function App() {
                     <Route path='/search' element={<SearchPage />} />
                     <Route path='/explore' element={<ExplorePage />} />
                     <Route path='/messages' element={<PlaceholderPage />} />
+                    <Route path='/messages/:id' element={<PlaceholderPage />} />
                     <Route path='/notification' element={<NotificationsPage />} />
                     <Route path='/create' element={<PlaceholderPage />} />
                     <Route path='/profile/current' element={<CurrentProfilePage />} />
