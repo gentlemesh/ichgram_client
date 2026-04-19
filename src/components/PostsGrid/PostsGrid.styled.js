@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export const Posts = styled(Box)(({ theme }) => ({
     display: 'grid',
@@ -17,3 +17,8 @@ export const Post = styled(Box)(({ post }) => ({
     boxSizing: 'border-box',
     paddingBottom: '100%',
 }));
+
+export const AbsentText = styled(Typography)({
+    textAlign: 'center',
+    display: 'block',
+});
