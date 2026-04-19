@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Box, Typography } from '@mui/material';
 
+import { selectAuthUser } from '../../../redux/slices/authSlice';
+import { followUser, unfollowUser } from '../../../redux/slices/userSlice';
 import { getPosts, selectPosts, toggleLikePostInStore, toggleLikePost } from '../../../redux/slices/postSlice';
 import {
     Posts, Post,
@@ -22,17 +24,30 @@ dayjs.extend(relativeTime);
 
 function MainPage() {
     const dispatch = useDispatch();
+    const [shouldReload, setShouldReload] = useState(false);
+    const authUser = useSelector(selectAuthUser);
     const posts = useSelector(selectPosts);
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch]);
 
-    const formatDate = date => dayjs(date).fromNow();
+        return () => setShouldReload(false);
+    }, [shouldReload, dispatch]);
+
+    const formatDate = date => dayjs(date).fromNow(true);
 
     const toggleLike = postId => {
         dispatch(toggleLikePostInStore(postId));
         dispatch(toggleLikePost(postId));
+    }
+
+    const toggleFollow = user => {
+        if (user.isFollowed) {
+            dispatch(unfollowUser(user.id));
+        } else {
+            dispatch(followUser(user.id));
+        }
+        setShouldReload(true);
     }
 
     return (
@@ -45,7 +60,11 @@ function MainPage() {
                             <Typography fontWeight="bold">{post.author.username}</Typography>
                         </NavLink>
                         <Typography variant="bodyGrey">{formatDate(post.createdAt)}</Typography>
-                        <FollowButton>{post.author.isFollowed ? 'unfollow' : 'follow'}</FollowButton>
+                        {authUser && authUser.id !== post.author.id && (
+                            <FollowButton onClick={() => toggleFollow(post.author)}>
+                                {post.author.isFollowed ? 'unfollow' : 'follow'}
+                            </FollowButton>
+                        )}
                     </Author>
                     <NavLink to={`/post/${post.id}`}>
                         <Image sx={{ backgroundImage: `url(${post.image})` }} />
